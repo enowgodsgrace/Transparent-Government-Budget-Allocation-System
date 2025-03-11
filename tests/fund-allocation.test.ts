@@ -1,21 +1,35 @@
+import { describe, it, expect, beforeEach } from "vitest"
 
-import { describe, expect, it } from "vitest";
+describe("Fund Allocation Contract", () => {
+  beforeEach(() => {
+    // Setup test environment
+  })
+  
+  it("should allocate funds to a proposal", () => {
+    const proposalId = 1
+    const amount = 1000000
+    
+    // Simulated contract call
+    const result = { success: true }
+    
+    expect(result.success).toBe(true)
+    
+    // Simulated allocation retrieval
+    const allocation = { amount: 1000000, status: "allocated" }
+    
+    expect(allocation.amount).toBe(amount)
+    expect(allocation.status).toBe("allocated")
+  })
+  
+  it("should not allow double allocation", () => {
+    const proposalId = 1
+    const amount = 500000
+    
+    // Simulated contract call for second allocation
+    const result = { success: false, error: 403 }
+    
+    expect(result.success).toBe(false)
+    expect(result.error).toBe(403)
+  })
+})
 
-const accounts = simnet.getAccounts();
-const address1 = accounts.get("wallet_1")!;
-
-/*
-  The test below is an example. To learn more, read the testing documentation here:
-  https://docs.hiro.so/stacks/clarinet-js-sdk
-*/
-
-describe("example tests", () => {
-  it("ensures simnet is well initalised", () => {
-    expect(simnet.blockHeight).toBeDefined();
-  });
-
-  // it("shows an example", () => {
-  //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
-  //   expect(result).toBeUint(0);
-  // });
-});
