@@ -13,3 +13,7 @@ N
 contracts/fund-allocation.clar,4/3/43407d338d293748c4e862305abc734e3555985c
 M
 tests/fund-allocation.test.ts,2/6/26b8bde75102b48c61abc472ec877a539a405ab7
+L
+contracts/public-voting.clar,e/e/ee72daee9d5989aac2421091a0ffff35d0d08327
+K
+tests/public-voting.test.ts,7/d/7d8cf4ef990827a6315213a5c59aa992e104fd21
