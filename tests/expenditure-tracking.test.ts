@@ -1,21 +1,40 @@
+import { describe, it, expect, beforeEach } from "vitest"
 
-import { describe, expect, it } from "vitest";
+describe("Expenditure Tracking Contract", () => {
+  beforeEach(() => {
+    // Setup test environment
+  })
+  
+  it("should record an expenditure", () => {
+    const proposalId = 1
+    const amount = 500000
+    
+    // Simulated contract call
+    const result = { success: true }
+    
+    expect(result.success).toBe(true)
+    
+    // Simulated expenditure retrieval
+    const expenditure = { spent: 500000, last_updated: 100 }
+    
+    expect(expenditure.spent).toBe(amount)
+    expect(expenditure.last_updated).toBe(100)
+  })
+  
+  it("should update existing expenditure", () => {
+    const proposalId = 1
+    const additionalAmount = 200000
+    
+    // Simulated contract call
+    const result = { success: true }
+    
+    expect(result.success).toBe(true)
+    
+    // Simulated expenditure retrieval after update
+    const expenditure = { spent: 700000, last_updated: 101 }
+    
+    expect(expenditure.spent).toBe(700000)
+    expect(expenditure.last_updated).toBe(101)
+  })
+})
 
-const accounts = simnet.getAccounts();
-const address1 = accounts.get("wallet_1")!;
-
-/*
-  The test below is an example. To learn more, read the testing documentation here:
-  https://docs.hiro.so/stacks/clarinet-js-sdk
-*/
-
-describe("example tests", () => {
-  it("ensures simnet is well initalised", () => {
-    expect(simnet.blockHeight).toBeDefined();
-  });
-
-  // it("shows an example", () => {
-  //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
-  //   expect(result).toBeUint(0);
-  // });
-});

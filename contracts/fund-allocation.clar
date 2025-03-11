@@ -1,30 +1,25 @@
+;; fund-allocation.clar
+;; Distributes funds based on approved budgets
 
-;; title: fund-allocation
-;; version:
-;; summary:
-;; description:
+(define-map allocations
+  { proposal-id: uint }
+  { amount: uint, status: (string-ascii 20) }
+)
 
-;; traits
-;;
+(define-public (allocate-funds (proposal-id uint) (amount uint))
+  (let
+    (
+      (existing-allocation (map-get? allocations { proposal-id: proposal-id }))
+    )
+    (asserts! (is-none existing-allocation) (err u403))
+    (ok (map-set allocations
+      { proposal-id: proposal-id }
+      { amount: amount, status: "allocated" }
+    ))
+  )
+)
 
-;; token definitions
-;;
-
-;; constants
-;;
-
-;; data vars
-;;
-
-;; data maps
-;;
-
-;; public functions
-;;
-
-;; read only functions
-;;
-
-;; private functions
-;;
+(define-read-only (get-allocation (proposal-id uint))
+  (map-get? allocations { proposal-id: proposal-id })
+)
 

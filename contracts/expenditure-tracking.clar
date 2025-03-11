@@ -1,30 +1,28 @@
+;; expenditure-tracking.clar
+;; Monitors and reports on actual spending
 
-;; title: expenditure-tracking
-;; version:
-;; summary:
-;; description:
+(define-map expenditures
+  { proposal-id: uint }
+  { spent: uint, last-updated: uint }
+)
 
-;; traits
-;;
+(define-public (record-expenditure (proposal-id uint) (amount uint))
+  (let
+    (
+      (existing-expenditure (default-to { spent: u0, last-updated: u0 }
+        (map-get? expenditures { proposal-id: proposal-id })))
+    )
+    (ok (map-set expenditures
+      { proposal-id: proposal-id }
+      {
+        spent: (+ (get spent existing-expenditure) amount),
+        last-updated: block-height
+      }
+    ))
+  )
+)
 
-;; token definitions
-;;
-
-;; constants
-;;
-
-;; data vars
-;;
-
-;; data maps
-;;
-
-;; public functions
-;;
-
-;; read only functions
-;;
-
-;; private functions
-;;
+(define-read-only (get-expenditure (proposal-id uint))
+  (map-get? expenditures { proposal-id: proposal-id })
+)
 
